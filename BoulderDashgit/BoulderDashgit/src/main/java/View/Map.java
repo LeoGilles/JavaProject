@@ -8,17 +8,17 @@ import java.io.*;
 
 public class Map 
 {
-	private int posX;//weight
-	private int posY;//height
-	private int posXS;
-	private int posYS;
-	private int ligV;
-	private int colV;
-	private int ligR;
-	private int colR;
-	private int ligB;
-	private int colB;
-	private Image floor, wall,rock,nothing,diamond;
+	protected int posX;//weight
+	protected int posY;//height
+	protected int posXS;
+	protected int posYS;
+	protected int ligV;
+	protected int colV;
+	protected int ligR;
+	protected int colR;
+	protected int ligB;
+	protected int colB;
+	private Image floor, wall,rock,nothing,diamond,pho,finish;
 	public char[][] tab;
 	String      ligne;
 	private Scanner     sc;
@@ -26,8 +26,8 @@ public class Map
 
 	public int 	    numNiv;
 	
-	private Scanner m;
-	private String Map[] = new String[29];
+	protected Scanner m;
+	protected String Map[] = new String[29];
 	
 
 	
@@ -49,6 +49,11 @@ ImageIcon img = new ImageIcon("bloc de terre.jpg");
 		nothing = img.getImage();
 		img = new ImageIcon("diamant 1.1.jpg");
 		diamond = img.getImage();
+		img = new ImageIcon("phoque.jpg");
+        pho = img.getImage();
+        img = new ImageIcon("finish1.jpg");
+        finish = img.getImage();
+        
 		openFile();
 		readFile();
 		closeFile();
@@ -76,7 +81,15 @@ ImageIcon img = new ImageIcon("bloc de terre.jpg");
 	{
 		return diamond;
 	}
-	
+	public Image getFinish()
+    {
+        return finish;
+    }
+
+    public Image getPho()
+    {
+        return pho;
+    }
 	public char getMap(int x , int y)
 	{
 		char index = tab[x][y] ;

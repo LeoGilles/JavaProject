@@ -32,7 +32,7 @@ public class Board extends JPanel implements ActionListener
 	  
 	BufferedImage img ;
 	public static int  Ps = 0 ;
-	private Block r;
+	protected Block r;
 	public Board() 
 	{
 		m = new Map();
@@ -111,7 +111,7 @@ public class Board extends JPanel implements ActionListener
                   
                     g.drawImage(m.getRock(), x * 16,y * 16, null);
 
-                	if (m.tab[x][y+1] == '0' && x+1 != p.getTileX())
+                	if (m.tab[x][y+1] == '0' &&  (x != p.getTileX() || y+1 != p.getTileY()))
 					{
 					m.tab[x][y] = '0';
 					
@@ -122,8 +122,14 @@ public class Board extends JPanel implements ActionListener
             		m.tab[x][y] = '3';
             	}
                 }
-                
-         
+                if(m.getMap(x, y) == 'f')
+                {
+                    g.drawImage(m.getFinish(), x * 16, y * 16, null);
+                }
+                if(m.getMap(p.getTileX(), p.getTileY()) == 'f')
+                {
+                    g.drawImage(m.getPho(), 0, 0, this.getWidth(), this.getHeight(), null);
+                }
                
 			
 			}
@@ -145,9 +151,14 @@ public class Board extends JPanel implements ActionListener
 
             if(keycode == KeyEvent.VK_Z) 
             {
-            	if (m.getMap(p.getTileX(), p.getTileY()) == '3' )
+            	if (m.getMap(p.getTileX(), p.getTileY()) == 'f')
             	{
-            		System.out.println("BloQUé");
+            		System.out.println("END");
+            	}
+            	else	if (m.getMap(p.getTileX(), p.getTileY()-1) == 'f' )
+            	{
+            		
+            		p.move(0, -1);
             	}
             	else if(!(m.getMap(p.getTileX(), p.getTileY() - 1)== '1')) 
                 {
@@ -155,7 +166,7 @@ public class Board extends JPanel implements ActionListener
                     {
                     	if (m.getMap(p.getTileX(), p.getTileY() - 1)== '4')
                     	{
-                    		m.tab[p.getTileX()][p.getTileY()-1] = '7';
+                    		m.tab[p.getTileX()][p.getTileY()-1] = '0';
                     		pt = pt + 1;
                     		System.out.println("Your Points :"+ pt)  ;
                     	}
@@ -169,9 +180,15 @@ public class Board extends JPanel implements ActionListener
 
             if(keycode == KeyEvent.VK_S) 
             {
-            	if (m.getMap(p.getTileX(), p.getTileY()) == '3' )
+            	
+           	if (m.getMap(p.getTileX(), p.getTileY()) == 'f')
             	{
-            		System.out.println("BloQUé");
+            		System.out.println("END");
+            	}
+           	else	if (m.getMap(p.getTileX(), p.getTileY()+1) == 'f' )
+            	{
+            	
+            		p.move(0, 1);
             	}
             	else    if(!(m.getMap(p.getTileX(), p.getTileY() + 1)== '1')) 
                 {
@@ -179,7 +196,7 @@ public class Board extends JPanel implements ActionListener
                     {
                     	if (m.getMap(p.getTileX(), p.getTileY() + 1)== '4')
                     	{
-                    		m.tab[p.getTileX()][p.getTileY()+1] = '7';
+                    		m.tab[p.getTileX()][p.getTileY()+1] = '0';
                     		pt = pt + 1;
                     		System.out.println("Your Points :"+ pt)  ;
                     	}
@@ -193,9 +210,16 @@ public class Board extends JPanel implements ActionListener
 
             if(keycode == KeyEvent.VK_Q) 
             {
-            	if (m.getMap(p.getTileX(), p.getTileY()) == '3' )
+            	
+            
+           	if (m.getMap(p.getTileX(), p.getTileY()) == 'f')
             	{
-            		System.out.println("BloQUé");
+            		System.out.println("END");
+            	}
+           	else	if (m.getMap(p.getTileX()-1, p.getTileY()) == 'f' )
+            	{
+            		
+            		p.move(-1, 0);
             	}
             	else    if(!(m.getMap(p.getTileX() - 1, p.getTileY())== '1')) 
                 {
@@ -203,7 +227,7 @@ public class Board extends JPanel implements ActionListener
                     {
                     	if (m.getMap(p.getTileX()-1, p.getTileY())== '4')
                     	{
-                    		m.tab[p.getTileX()-1][p.getTileY()] = '7';
+                    		m.tab[p.getTileX()-1][p.getTileY()] = '0';
                     		pt = pt + 1;
                     		System.out.println("Your Points :"+ pt)  ;
                     	}
@@ -217,9 +241,14 @@ public class Board extends JPanel implements ActionListener
 
             if(keycode == KeyEvent.VK_D) 
             {
-            	if (m.getMap(p.getTileX(), p.getTileY()) == '3' )
+            	if (m.getMap(p.getTileX(), p.getTileY()) == 'f')
             	{
-            		System.out.println("BloQUé");
+            		System.out.println("END");
+            	}
+            	else if (m.getMap(p.getTileX()+1, p.getTileY()) == 'f' )
+            	{
+            		
+            		p.move(1, 0);
             	}
             	else    if(!(m.getMap(p.getTileX() + 1, p.getTileY())== '1')) 
                 {
@@ -227,7 +256,7 @@ public class Board extends JPanel implements ActionListener
                     {
                     	if (m.getMap(p.getTileX()+1, p.getTileY())== '4')
                     	{
-                    		m.tab[p.getTileX()+1][p.getTileY()] = '7';
+                    		m.tab[p.getTileX()+1][p.getTileY()] = '0';
                     		pt = pt + 1;
                     		System.out.println("Your Points :"+ pt)  ;
                     	}
