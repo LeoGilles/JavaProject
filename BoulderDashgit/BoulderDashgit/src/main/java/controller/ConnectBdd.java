@@ -3,6 +3,7 @@ package controller;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -19,7 +20,7 @@ public class ConnectBdd {
     protected String user = "root";
     protected String passwd = "";
     protected int choice;
-
+    protected CallableStatement cst ;
 
     /**
      * All attributes for the method chooseMap
@@ -62,59 +63,34 @@ public class ConnectBdd {
      * @param ch the choice of the user
      * This method is used to choice the map you want to play
      */
-    public void chooseMap(int ch) {
+    public void chooseMap(int ch) throws SQLException {
         try {
-            st = conn.createStatement();
-    /**
-     *  In the part "switch" the SQL request is chose according to the choice of the user in the param ch.
-     * - st is a Statement object, to use SQL requests
-     * - rst is a ResultSet object, to take the result of the Statement object.
-     */
-            switch(ch)
-            {
-            case 1:
-                rst = st.executeQuery("SELECT * FROM levels WHERE id= 1");
-                break;
-            case 2:
-                rst = st.executeQuery("SELECT * FROM levels WHERE id= 2");
-                break;
-            case 3:
-                 rst = st.executeQuery("SELECT * FROM levels WHERE id= 3");
-                 break;
-            case 4:
-                 rst = st.executeQuery("SELECT * FROM levels WHERE id= 4");
-                 break;
-            case 5:
-                 rst = st.executeQuery("SELECT * FROM levels WHERE id= 5");
-                 break;
-            default:
-                rst = st.executeQuery("SELECT * FROM levels WHERE id= 1");
-                break;
-            }
+        cst = conn.prepareCall("{call chooseMap(?, ?)}");
+        cst.setInt(1, ch);
+        cst.registerOutParameter(2, java.sql.Types.VARCHAR);
+        cst.execute();
+        stg = cst.getString(2);
+
+    }catch(SQLException e) {
+        e.printStackTrace();
+        System.out.println("Error");
+    }
 
     /**
      * In the part "while" we have a loop to publish the result.
-     */
-            while(rst.next()) {
+     /
+          /  while(rst.next()) {
                 stg = rst.getString("Map");
-               // System.out.println(stg);
-              
-                try {
-					  File ff=new File("Map.txt");
-                	FileWriter ffw=new FileWriter(ff);
-                	ffw.write(stg);
-                	ffw.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-            }
-    /**
-     * In the part "catch" we have the exceptions, if the instructions don't work.
-     */
-        }catch(SQLException e) {
-            e.printStackTrace();
-        }
-    }
+               // System.out.println(stg);*/
 
+                try {
+                      File ff=new File("Map.txt");
+                    FileWriter ffw=new FileWriter(ff);
+                    ffw.write(stg);
+                    ffw.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+    }
 
 }

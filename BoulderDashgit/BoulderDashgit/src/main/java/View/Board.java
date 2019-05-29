@@ -1,4 +1,4 @@
-package controller ;
+package View ;
 
 
 import java.awt.Graphics;
@@ -14,10 +14,9 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-import View.Map;
 import model.Monsters;
 import model.Player;
-import model.Rock;
+import model.Block;
 
 public class Board extends JPanel implements ActionListener
 {
@@ -30,15 +29,15 @@ public class Board extends JPanel implements ActionListener
 	private Player p;
 	private Monsters mon;
 	private int pt = 0;
-	  ;
+	  
 	BufferedImage img ;
 	public static int  Ps = 0 ;
-	private Rock r;
+	private Block r;
 	public Board() 
 	{
 		m = new Map();
 		p = new Player();
-		r = new Rock();
+		r = new Block();
 		mon = new Monsters();
 		addKeyListener(new Al());
 		setFocusable(true);
@@ -67,44 +66,61 @@ public class Board extends JPanel implements ActionListener
 			for(int x = 0; x < 29; x++) 
 			{
 				
-				if ( !(r.axeXY[x][y] == 2 ))
-                    r.setFloorXY(x, y);
 				
+				
+               if (m.getMap(x, y) == '2') {
+                	   if ( !(m.tab[x][y] == '0') ){
+                		   m.tab[x][y] = '2';
+					   
+				}
+                	
+                    g.drawImage(m.getFloor(), x * 16,y * 16 , null);
+                    
+                }
  
-                if(m.getMap(x, y)== '2' )
+                if(m.getMap(x, y) == '0' )
                 {
-                    g.drawImage(m.getNothing(),r.getRockX(x) * 16,r.getRockY(y) * 16,null);
-
-
+                    g.drawImage(m.getNothing(),x * 16,y * 16,null);
                 }
                 	  
-                if (r.verif(x, y) == 0) {
-
-                    g.drawImage(m.getFloor(), r.getRockX(x) * 16, r.getRockY(y) * 16, null);
-                }
-                
+              
                 if(m.getMap(x,y)== '4'  )
 				{
                 	g.drawImage(m.getDiamond(), x * 16, y * 16, null);
-					if (r.axeXY[x][y] == 0)
+					
+                	if (m.tab[x][y+1] == '0')
 						{
-						r.setDiamonsXY(x, y);
+						m.tab[x][y] = '0';
+						
+						m.tab[x][y+1] = '4';
 						}
-             
+                	else 
+                	{
+                		m.tab[x][y] = '4';
+                	}
 					
 				}
 
                 if(m.getMap(x, y)== '1')
                 {
-                    r.setWallXY(x, y);
+                	m.tab[x][y] = '1';
                     g.drawImage(m.getWall(), x * 16, y * 16, null);
                 }
                 if(m.getMap(x,  y)== '3' )
                 {
                   
-                	r.setRockXY(x,y);
-                    g.drawImage(m.getRock(), r.getRockX(x) * 16, r.getRockY(y) * 16, null);
+                    g.drawImage(m.getRock(), x * 16,y * 16, null);
 
+                	if (m.tab[x][y+1] == '0' && x+1 != p.getTileX())
+					{
+					m.tab[x][y] = '0';
+					
+					m.tab[x][y+1] = '3';
+					}
+            	else 
+            	{
+            		m.tab[x][y] = '3';
+            	}
                 }
                 
          
@@ -129,76 +145,96 @@ public class Board extends JPanel implements ActionListener
 
             if(keycode == KeyEvent.VK_Z) 
             {
-                if(!(m.getMap(p.getTileX(), p.getTileY() - 1)== '1')) 
+            	if (m.getMap(p.getTileX(), p.getTileY()) == '3' )
+            	{
+            		System.out.println("BloQUé");
+            	}
+            	else if(!(m.getMap(p.getTileX(), p.getTileY() - 1)== '1')) 
                 {
                     if(!(m.getMap(p.getTileX(), p.getTileY() - 1)== '3')) 
                     {
                     	if (m.getMap(p.getTileX(), p.getTileY() - 1)== '4')
                     	{
-                    		r.axeXY[p.getTileX()][p.getTileY()-1] = 2;
+                    		m.tab[p.getTileX()][p.getTileY()-1] = '7';
                     		pt = pt + 1;
                     		System.out.println("Your Points :"+ pt)  ;
                     	}
                     	Ps = 1;
-                        r.setNothing(p.getTileX(), p.getTileY()-1);
+                    	
                         p.move(0, -1);
+                      m.tab[p.getTileX()][p.getTileY()] = '0';
                     }
                 }
             }
 
             if(keycode == KeyEvent.VK_S) 
             {
-                if(!(m.getMap(p.getTileX(), p.getTileY() + 1)== '1')) 
+            	if (m.getMap(p.getTileX(), p.getTileY()) == '3' )
+            	{
+            		System.out.println("BloQUé");
+            	}
+            	else    if(!(m.getMap(p.getTileX(), p.getTileY() + 1)== '1')) 
                 {
                     if(!(m.getMap(p.getTileX(), p.getTileY() + 1)== '3')) 
                     {
                     	if (m.getMap(p.getTileX(), p.getTileY() + 1)== '4')
                     	{
-                    		r.axeXY[p.getTileX()][p.getTileY()+1] = 2;
+                    		m.tab[p.getTileX()][p.getTileY()+1] = '7';
                     		pt = pt + 1;
                     		System.out.println("Your Points :"+ pt)  ;
                     	}
                     	Ps=2;
-                        r.setNothing(p.getTileX(), p.getTileY()+1);
+                      
                         p.move(0, 1);
+                        m.tab[p.getTileX()][p.getTileY()] = '0';
                     }
                 }
             }
 
             if(keycode == KeyEvent.VK_Q) 
             {
-                if(!(m.getMap(p.getTileX() - 1, p.getTileY())== '1')) 
+            	if (m.getMap(p.getTileX(), p.getTileY()) == '3' )
+            	{
+            		System.out.println("BloQUé");
+            	}
+            	else    if(!(m.getMap(p.getTileX() - 1, p.getTileY())== '1')) 
                 {
                     if(!(m.getMap(p.getTileX() - 1, p.getTileY())== '3')) 
                     {
-                    	if (m.getMap(p.getTileX()-1, p.getTileY() - 1)== '4')
+                    	if (m.getMap(p.getTileX()-1, p.getTileY())== '4')
                     	{
-                    		r.axeXY[p.getTileX()-1][p.getTileY()] = 2;
+                    		m.tab[p.getTileX()-1][p.getTileY()] = '7';
                     		pt = pt + 1;
                     		System.out.println("Your Points :"+ pt)  ;
                     	}
                     	Ps=3;
-                        r.setNothing(p.getTileX()-1, p.getTileY());
+                    	
                         p.move(-1, 0);
+                        m.tab[p.getTileX()][p.getTileY()] = '0';
                     }
                 }
             }
 
             if(keycode == KeyEvent.VK_D) 
             {
-                if(!(m.getMap(p.getTileX() + 1, p.getTileY())== '1')) 
+            	if (m.getMap(p.getTileX(), p.getTileY()) == '3' )
+            	{
+            		System.out.println("BloQUé");
+            	}
+            	else    if(!(m.getMap(p.getTileX() + 1, p.getTileY())== '1')) 
                 {
                     if(!(m.getMap(p.getTileX() + 1, p.getTileY())== '3')) 
                     {
                     	if (m.getMap(p.getTileX()+1, p.getTileY())== '4')
                     	{
-                    		r.axeXY[p.getTileX()+1][p.getTileY()] = 2;
+                    		m.tab[p.getTileX()+1][p.getTileY()] = '7';
                     		pt = pt + 1;
                     		System.out.println("Your Points :"+ pt)  ;
                     	}
                     	Ps=4;
-                        r.setNothing(p.getTileX()+1, p.getTileY());
+                    	
                         p.move(1, 0);
+                        m.tab[p.getTileX()][p.getTileY()] = '0';
                     }
                 }
             }

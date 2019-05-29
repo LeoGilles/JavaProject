@@ -1,12 +1,12 @@
-package View;
+package controller;
 
 
+import java.sql.SQLException;
 import java.util.Scanner;
 
 import javax.swing.JFrame;
 
-import controller.Board;
-import controller.ConnectBdd;
+import View.Board;
 
 public class MainJava 
 {
@@ -17,7 +17,12 @@ public class MainJava
 	        System.out.println("Quel niveau voulez-vous ? 1-5 ");
 	        int choice = sc.nextInt();
 	        cbdd.createConnexion();
-	        cbdd.chooseMap(choice);
+	        try {
+				cbdd.chooseMap(choice);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 	        sc.close();
 		new MainJava();
 	}
