@@ -15,7 +15,10 @@ public class Player
 	private Image player3;
 	private Image player4;
 	private Image player5;
-	
+	private Image player6;
+	/**
+	 * Player's Constructor with his coordinates and sprites
+	 */
 	public Player() 
 	{
 		ImageIcon img = new ImageIcon("persob.jpg");
@@ -30,8 +33,12 @@ public class Player
 		ImageIcon img3 = new ImageIcon("persod.jpg");
 		player4 = img3.getImage();	
 				
-		ImageIcon img4 = new ImageIcon("perso 4.jpg");
+		ImageIcon img4 = new ImageIcon("perso 6.jpg");
 		player5 = img4.getImage();
+		ImageIcon img5 = new ImageIcon("perso 4.jpg");
+		player6 = img5.getImage();
+		
+		
 		
 		tileX = 1;
 		tileY = 1;
@@ -51,8 +58,10 @@ public class Player
 		else if (vr == 4) {
 			return player4;
 		}
-		else 
+		else if (vr == 5) {
 			return player5;
+		}
+			return player6;
 		}
 	
 	public int getTileX() 

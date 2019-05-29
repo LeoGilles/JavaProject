@@ -21,7 +21,7 @@ import model.Block;
 public class Board extends JPanel implements ActionListener
 {
 	/**
-	 * 
+	 * Variable initialisation
 	 */
 	private static final long serialVersionUID = 1L;
 	private Timer timer;
@@ -35,13 +35,19 @@ public class Board extends JPanel implements ActionListener
 	protected Block r;
 	public Board() 
 	{
+		/**
+		 * Instanciation
+		 */
 		m = new Map();
-		p = new Player();
+		p = new Player();      
 		r = new Block();
 		mon = new Monsters();
 		addKeyListener(new Al());
 		setFocusable(true);
 		
+		/**
+		 * Variable who will replace our observer
+		 */
 		timer = new Timer(25, this);
 		timer.restart();
 	}
@@ -88,16 +94,16 @@ public class Board extends JPanel implements ActionListener
 				{
                 	g.drawImage(m.getDiamond(), x * 16, y * 16, null);
 					
-                	if (m.tab[x][y+1] == '0')
-						{
-						m.tab[x][y] = '0';
-						
-						m.tab[x][y+1] = '4';
-						}
-                	else 
-                	{
-                		m.tab[x][y] = '4';
-                	}
+                	if (m.tab[x][y+1] == '0' &&  (x != p.getTileX() || y+1 != p.getTileY()))
+					{
+					m.tab[x][y] = '0';
+					
+					m.tab[x][y+1] = '4';
+					}
+            	else 
+            	{
+            		m.tab[x][y] = '4';
+            	}
 					
 				}
 
@@ -111,11 +117,16 @@ public class Board extends JPanel implements ActionListener
                   
                     g.drawImage(m.getRock(), x * 16,y * 16, null);
 
-                	if (m.tab[x][y+1] == '0' &&  (x != p.getTileX() || y+1 != p.getTileY()))
+                	if (m.tab[x][y+1] == '0' &&(  (x != p.getTileX() || y+1 != p.getTileY()) ))
 					{
 					m.tab[x][y] = '0';
 					
 					m.tab[x][y+1] = '3';
+					if (x == p.getTileX() && y+2 == p.getTileY())
+					{
+						m.tab[x][y+2] = '3';
+						
+					}
 					}
             	else 
             	{
@@ -138,7 +149,8 @@ public class Board extends JPanel implements ActionListener
 		
 		g.clearRect(p.getTileX() * 16,p.getTileY() * 16,0,0);
 		g.drawImage(p.getPlayer(Ps), p.getTileX() * 16, p.getTileY() * 16, null);
-		g.drawImage(null, mon.getLarge() *16, mon.getWidht() * 16, null);
+		
+		g.drawImage(mon.getMonster(), mon.getMonsterX() *16, mon.getMonsterY() * 16, null);
 		
 		
 	}
@@ -151,9 +163,11 @@ public class Board extends JPanel implements ActionListener
 
             if(keycode == KeyEvent.VK_Z) 
             {
-            	if (m.getMap(p.getTileX(), p.getTileY()) == 'f')
+            	if (m.getMap(p.getTileX(), p.getTileY()) == 'f'|| m.getMap(p.getTileX(), p.getTileY()) == '3' )
             	{
             		System.out.println("END");
+            		Ps = 5;
+            		
             	}
             	else	if (m.getMap(p.getTileX(), p.getTileY()-1) == 'f' )
             	{
@@ -171,7 +185,7 @@ public class Board extends JPanel implements ActionListener
                     		System.out.println("Your Points :"+ pt)  ;
                     	}
                     	Ps = 1;
-                    	
+                    	mon.IA();
                         p.move(0, -1);
                       m.tab[p.getTileX()][p.getTileY()] = '0';
                     }
@@ -181,9 +195,10 @@ public class Board extends JPanel implements ActionListener
             if(keycode == KeyEvent.VK_S) 
             {
             	
-           	if (m.getMap(p.getTileX(), p.getTileY()) == 'f')
+           	if (m.getMap(p.getTileX(), p.getTileY()) == 'f'|| m.getMap(p.getTileX(), p.getTileY()) == '3' )
             	{
             		System.out.println("END");
+            		Ps = 5;
             	}
            	else	if (m.getMap(p.getTileX(), p.getTileY()+1) == 'f' )
             	{
@@ -201,7 +216,7 @@ public class Board extends JPanel implements ActionListener
                     		System.out.println("Your Points :"+ pt)  ;
                     	}
                     	Ps=2;
-                      
+                    	mon.IA();
                         p.move(0, 1);
                         m.tab[p.getTileX()][p.getTileY()] = '0';
                     }
@@ -212,9 +227,10 @@ public class Board extends JPanel implements ActionListener
             {
             	
             
-           	if (m.getMap(p.getTileX(), p.getTileY()) == 'f')
+           	if (m.getMap(p.getTileX(), p.getTileY()) == 'f' || m.getMap(p.getTileX(), p.getTileY()) == '3' )
             	{
             		System.out.println("END");
+            		Ps = 5;
             	}
            	else	if (m.getMap(p.getTileX()-1, p.getTileY()) == 'f' )
             	{
@@ -232,7 +248,7 @@ public class Board extends JPanel implements ActionListener
                     		System.out.println("Your Points :"+ pt)  ;
                     	}
                     	Ps=3;
-                    	
+                    	mon.IA();
                         p.move(-1, 0);
                         m.tab[p.getTileX()][p.getTileY()] = '0';
                     }
@@ -241,9 +257,10 @@ public class Board extends JPanel implements ActionListener
 
             if(keycode == KeyEvent.VK_D) 
             {
-            	if (m.getMap(p.getTileX(), p.getTileY()) == 'f')
+            	if (m.getMap(p.getTileX(), p.getTileY()) == 'f'|| m.getMap(p.getTileX(), p.getTileY()) == '3' )
             	{
             		System.out.println("END");
+            		Ps = 5;
             	}
             	else if (m.getMap(p.getTileX()+1, p.getTileY()) == 'f' )
             	{
@@ -261,7 +278,7 @@ public class Board extends JPanel implements ActionListener
                     		System.out.println("Your Points :"+ pt)  ;
                     	}
                     	Ps=4;
-                    	
+                    	mon.IA();
                         p.move(1, 0);
                         m.tab[p.getTileX()][p.getTileY()] = '0';
                     }

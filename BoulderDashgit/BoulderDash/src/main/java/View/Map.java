@@ -57,7 +57,7 @@ ImageIcon img = new ImageIcon("bloc de terre.jpg");
 		openFile();
 		readFile();
 		closeFile();
-		PutFile();
+		//PutFile();
 	}
 	
 	public Image getFloor() 
@@ -167,7 +167,7 @@ ImageIcon img = new ImageIcon("bloc de terre.jpg");
 	{
 		sc.close();
 	}
-	 public void PutFile()
+	/* public void PutFile()
 	 {
 	 		for( int lig=0; lig<tab.length; lig++)
 	{
@@ -176,6 +176,6 @@ ImageIcon img = new ImageIcon("bloc de terre.jpg");
 
 		System.out.println();
 	}
-	 }
+	 }*/
 	
 }
