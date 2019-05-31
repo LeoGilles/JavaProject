@@ -9,14 +9,14 @@ import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Random;
 
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-import model.Monsters;
-import model.Player;
 import model.Block;
+import model.Player;
 
 public class Board extends JPanel implements ActionListener
 {
@@ -27,9 +27,9 @@ public class Board extends JPanel implements ActionListener
 	private Timer timer;
 	private Map m;
 	private Player p;
-	private Monsters mon;
+	protected int Mo1 = 0;
 	private int pt = 0;
-	  
+	private int position = 1;
 	BufferedImage img ;
 	public static int  Ps = 0 ;
 	protected Block r;
@@ -41,7 +41,7 @@ public class Board extends JPanel implements ActionListener
 		m = new Map();
 		p = new Player();      
 		r = new Block();
-		mon = new Monsters();
+		
 		addKeyListener(new Al());
 		setFocusable(true);
 		
@@ -57,6 +57,10 @@ public class Board extends JPanel implements ActionListener
 	public void actionPerformed(ActionEvent e) 
 	{
 		repaint();
+	}
+	public static int getRandomNumberInts(int min, int max){
+	    Random random = new Random();
+	    return random.ints(min,(max+1)).findFirst().getAsInt();
 	}
 	/**
 	 * paint of our JPanel
@@ -78,6 +82,7 @@ public class Board extends JPanel implements ActionListener
 		 * in this loop we will read our table character by character and replace them by
 		 * a jpg
 		 */
+	
 		for(int y = 0; y < 29; y++) 
 		{
 			for(int x = 0; x < 29; x++) 
@@ -181,20 +186,57 @@ public class Board extends JPanel implements ActionListener
                 {
                     g.drawImage(m.getPho(), 0, 0, this.getWidth(), this.getHeight(), null);
                 }
-               
-			
-			}
-			
+                
+                
+                if(m.getMap(x, y)== '5')
+                {
+                	if (position == 1 && m.getMap(x, y-1)== '0' )
+                	{
+                		m.tab[x][y] = '0';
+                		m.tab[x][y-1] = '5';
+                		 g.drawImage(m.getmonster(),x * 16,y * 16,null);
+                		 position = 0;
+                	}
+                	else if (position == 2 && m.getMap(x, y+1)== '0')
+                	{
+                		m.tab[x][y] = '0';
+                		m.tab[x][y+1] = '5';
+                		g.drawImage(m.getmonster(),x * 16,y * 16,null);
+                		position = 0;
+                	}
+                	else if (position == 3 && m.getMap(x-1, y)== '0')
+                	{
+                		m.tab[x][y] = '0';
+                		m.tab[x-1][y] = '5';
+                		g.drawImage(m.getmonster(),x * 16,y * 16,null);
+                		position = 0;
+                	}
+                	else if (position == 4 && m.getMap(x+1, y)== '0')
+                	{
+                		m.tab[x][y] = '0';
+                		m.tab[x+1][y] = '5';
+                		g.drawImage(m.getmonster(),x * 16,y * 16,null);
+                		position = 0;
+                	}                
+                	else
+                	{
+                		g.drawImage(m.getmonster(),x * 16,y * 16,null);
+                		position = 0;
+                	}
+                           	
+                }
+                if ( m.getMap(p.getTileX(), p.getTileY()) == '5')
+                {
+                	m.tab[p.getTileX()][p.getTileY()] = '3';
+                }
+			}	
 		}
 		/**
 		 * clearRect to refresh our player's model (who is not essential , just to be sure)
 		 * Player's display,call our class players and his function
 		 */
 		g.clearRect(p.getTileX() * 16,p.getTileY() * 16,0,0);
-		g.drawImage(p.getPlayer(Ps), p.getTileX() * 16, p.getTileY() * 16, null);
-		
-		g.drawImage(mon.getMonster(), mon.getMonsterX() *16, mon.getMonsterY() * 16, null);
-		
+		g.drawImage(p.getPlayer(Ps), p.getTileX() * 16, p.getTileY() * 16, null);	
 		
 	}
 	/**
@@ -210,7 +252,6 @@ public class Board extends JPanel implements ActionListener
 			 * variable initialisation
 			 */
             int keycode = e.getKeyCode();
-
             /**
              * if our players go up, we will test if there is nothing wrong with the position up
              * if there is nothing , the player will change his position,change his sprite with
@@ -226,8 +267,7 @@ public class Board extends JPanel implements ActionListener
             	if (m.getMap(p.getTileX(), p.getTileY()) == 'f'|| m.getMap(p.getTileX(), p.getTileY()) == '3' ) /**test if we are on a rock or finishblock   */
             	{
             		System.out.println("END");                           /**display end*/
-            		Ps = 5;                                              /**change sprite*/
-            		
+            		Ps = 5;                                              /**change sprite*/           		
             	}
             	
             	else if(!(m.getMap(p.getTileX(), p.getTileY() - 1)== '1')) /**test if the next case is a wall   */
@@ -240,27 +280,26 @@ public class Board extends JPanel implements ActionListener
                     		pt = pt + 1;                                 /**add points*/
                     		System.out.println("Your Points :"+ pt)  ;    /** display points*/   
                     	}
-                    	Ps = 1;                                   /**change sprite*/
-                    	
+                    	Ps = 1;                                   /**change sprite*/                    	
                         p.move(0, -1);                                  /** make the player move */
                       m.tab[p.getTileX()][p.getTileY()] = '0';          /** set 0 to table */
+                   //   System.out.println(m.tab[mon.getMonsterX()][mon.getMonsterY()-1]);
                     }
                 }
+            	position = getRandomNumberInts(1,4);
             }
 /**
  * the same as up.key but for down.key
  */
             if(keycode == KeyEvent.VK_S) 
-            {
-            	
+            {            	
            	if (m.getMap(p.getTileX(), p.getTileY()) == 'f'|| m.getMap(p.getTileX(), p.getTileY()) == '3' )
             	{
             		System.out.println("END");
             		Ps = 5;
             	}
            	else	if (m.getMap(p.getTileX(), p.getTileY()+1) == 'f' )
-            	{
-            	
+            	{        	
             		p.move(0, 1);
             	}
             	else    if(!(m.getMap(p.getTileX(), p.getTileY() + 1)== '1')) 
@@ -274,45 +313,38 @@ public class Board extends JPanel implements ActionListener
                     		System.out.println("Your Points :"+ pt)  ;
                     	}
                     	Ps=2;
-                    	
                         p.move(0, 1);
                         m.tab[p.getTileX()][p.getTileY()] = '0';
                     }
                 }
+           	position = getRandomNumberInts(1,4);
             }
             /**
              * the same as up.key and down.key but , if we try to go in a rock block and there is 
              * nothing after this rock, we will push the rock block and take his place 
              */
             if(keycode == KeyEvent.VK_Q) 
-            {
-            	
-            
+            {  
            	if (m.getMap(p.getTileX(), p.getTileY()) == 'f' || m.getMap(p.getTileX(), p.getTileY()) == '3' )
             	{
             		System.out.println("END");
             		Ps = 5;
             	}
            	else	if (m.getMap(p.getTileX()-1, p.getTileY()) == 'f' )
-            	{
-            		
+            	{        		
             		p.move(-1, 0);
             	}
             	else    if(!(m.getMap(p.getTileX() - 1, p.getTileY())== '1')) 
                 {
                     if(!(m.getMap(p.getTileX() - 1, p.getTileY())== '3')) 
-                    {
-                   
-                    		
+                    {                                       		
                     	if (m.getMap(p.getTileX()-1, p.getTileY())== '4')
                     	{
                     		m.tab[p.getTileX()-1][p.getTileY()] = '0';
                     		pt = pt + 1;
                     		System.out.println("Your Points :"+ pt)  ;
-                    	}
-                    	
-                    	Ps=3;
-                    	
+                    	}                  	
+                    	Ps=3;                    	
                         p.move(-1, 0);
                         m.tab[p.getTileX()][p.getTileY()] = '0';     
                     }
@@ -327,6 +359,7 @@ public class Board extends JPanel implements ActionListener
                     	}
                     }
                 }
+           	position = getRandomNumberInts(1,4);
             }
             /**
              * the same as left.key
@@ -339,8 +372,7 @@ public class Board extends JPanel implements ActionListener
             		Ps = 5;
             	}
             	else if (m.getMap(p.getTileX()+1, p.getTileY()) == 'f' )
-            	{
-            		
+            	{           		
             		p.move(1, 0);
             	}
             	else    if(!(m.getMap(p.getTileX() + 1, p.getTileY())== '1')) 
@@ -353,8 +385,7 @@ public class Board extends JPanel implements ActionListener
                     		pt = pt + 1;
                     		System.out.println("Your Points :"+ pt)  ;
                     	}
-                    	Ps=4;
-                    	
+                    	Ps=4;                   	
                         p.move(1, 0);
                         m.tab[p.getTileX()][p.getTileY()] = '0';
                     }
@@ -370,6 +401,7 @@ public class Board extends JPanel implements ActionListener
                     }
                 }
             }
+            position = getRandomNumberInts(1,4);
 }
 }
 }

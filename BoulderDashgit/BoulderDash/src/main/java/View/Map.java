@@ -15,13 +15,8 @@ public class Map
 	protected int posY;//height
 	protected int posXS;
 	protected int posYS;
-	protected int ligV;
-	protected int colV;
-	protected int ligR;
-	protected int colR;
-	protected int ligB;
-	protected int colB;
-	private Image floor, wall,rock,nothing,diamond,pho,finish; 
+	protected int ligV ,colV,ligR,colR,ligB,colB,ligM,colM;
+	private Image floor, wall,rock,nothing,diamond,pho,finish,monster; 
 	public char[][] tab;
 	String      ligne;
 	private Scanner     sc;
@@ -59,6 +54,8 @@ ImageIcon img = new ImageIcon("DirtBlock.jpg");
         pho = img.getImage();
         img = new ImageIcon("finish1.jpg");
         finish = img.getImage();
+        img = new ImageIcon("Mob.jpg");
+        monster = img.getImage();
         
 		openFile();
 		readFile();
@@ -98,6 +95,10 @@ ImageIcon img = new ImageIcon("DirtBlock.jpg");
     public Image getPho()
     {
         return pho;
+    }
+    public Image getmonster()
+    {
+    	return monster;
     }
     /**
      * function to return the character in the table at a designated position
@@ -174,7 +175,11 @@ ImageIcon img = new ImageIcon("DirtBlock.jpg");
 						this.ligR = cptLig;
 						this.colR = cptCol;
 					}
-
+					if( tab[cptLig][cptCol] == '5')
+					{
+						this.ligM = cptLig;
+						this.colM = cptCol;
+					}
 
 				}
 
