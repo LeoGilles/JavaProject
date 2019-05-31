@@ -8,7 +8,9 @@ import javax.swing.*;
 
 public class Player 
 {
-	
+	/**
+	 * Attributes initialization
+	 */
 	private int tileX, tileY;
 	private Image player;
 	private Image player2;
@@ -43,7 +45,11 @@ public class Player
 		tileX = 1;
 		tileY = 1;
 	}
-	
+	/**
+	 * Function to select the appropriate sprite with each of the player's move
+	 * @param vr
+	 * @return
+	 */
 	public Image getPlayer(int vr) 
 	{
 		if (vr== 1) {
@@ -63,17 +69,27 @@ public class Player
 		}
 			return player6;
 		}
-	
+	/**
+	 * function to get the x position
+	 * @return
+	 */
 	public int getTileX() 
 	{
 		return tileX;
 	}
-	
+	/**
+	 * function to get the y position
+	 * @return
+	 */
 	public int getTileY() 
 	{
 		return tileY;
 	}
-	
+	/**
+	 * function to move the player position
+	 * @param dx
+	 * @param dy
+	 */
 	public void move(int dx, int dy) 
 	{
 		tileX += dx;

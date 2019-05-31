@@ -8,6 +8,9 @@ import java.io.*;
 
 public class Map 
 {
+	/**
+	 * Attributs initialization
+	 */
 	protected int posX;//weight
 	protected int posY;//height
 	protected int posXS;
@@ -18,7 +21,7 @@ public class Map
 	protected int colR;
 	protected int ligB;
 	protected int colB;
-	private Image floor, wall,rock,nothing,diamond,pho,finish;
+	private Image floor, wall,rock,nothing,diamond,pho,finish; 
 	public char[][] tab;
 	String      ligne;
 	private Scanner     sc;
@@ -35,21 +38,24 @@ public class Map
 	public Map() 
 	{
 		
-		
+		/**
+		 * Images initialization 
+		 * and call function to open the file with the map,read the file and close the file
+		 */
 		 
 		nbLig = nbCol = 0;
 	
-ImageIcon img = new ImageIcon("bloc de terre.jpg");
+ImageIcon img = new ImageIcon("DirtBlock.jpg");
 		floor = img.getImage();
-		img = new ImageIcon("mur.jpg");
+		img = new ImageIcon("Wall.jpg");
 		wall = img.getImage();
-		img = new ImageIcon("pierre 1.jpg");
+		img = new ImageIcon("Rock1.jpg");
 		rock = img.getImage();
 		img = new ImageIcon("download.jpg");
 		nothing = img.getImage();
-		img = new ImageIcon("diamant 1.1.jpg");
+		img = new ImageIcon("Diamons1.jpg");
 		diamond = img.getImage();
-		img = new ImageIcon("phoque.jpg");
+		img = new ImageIcon("endSprite.jpg");
         pho = img.getImage();
         img = new ImageIcon("finish1.jpg");
         finish = img.getImage();
@@ -57,9 +63,12 @@ ImageIcon img = new ImageIcon("bloc de terre.jpg");
 		openFile();
 		readFile();
 		closeFile();
-		//PutFile();
+		
 	}
-	
+	/**
+	 * methods to return the associated Sprite
+	 * @return
+	 */
 	public Image getFloor() 
 	{
 		return floor;
@@ -90,18 +99,27 @@ ImageIcon img = new ImageIcon("bloc de terre.jpg");
     {
         return pho;
     }
+    /**
+     * function to return the character in the table at a designated position
+     * @param x
+     * @param y
+     * @return
+     */
 	public char getMap(int x , int y)
 	{
 		char index = tab[x][y] ;
 		return index;
 	}
 	
-	
+	/**
+	 * function to open the file and get his length/height 
+	 * and then create our table with this values
+	 */
 	public void openFile()
 	{
 		try
 		{
-			sc = new Scanner ( new FileReader ( "Map.txt" ) );
+			sc = new Scanner ( new FileReader ( "Map.txt" ) ); 
 
 			nbCol = sc.nextLine().length();
 			nbLig = 1;
@@ -115,7 +133,9 @@ ImageIcon img = new ImageIcon("bloc de terre.jpg");
 		tab = new char[nbLig][nbCol];
 	
 	}
-	
+	/**
+	 * function to Read our file a second time and put all characters into our table 
+	 */
 	public void readFile() 
 	{
 		try
@@ -129,7 +149,7 @@ ImageIcon img = new ImageIcon("bloc de terre.jpg");
 				for (int cptCol=0; cptCol<nbCol; cptCol++)
 				{
 					tab[cptLig][cptCol] = ligne.charAt(cptCol);
-					if( tab[cptLig][cptCol] == '0' )
+					if( tab[cptLig][cptCol] == '0' )    /**for each caracters we select a variable and put it in the table    */
 					{
 						this.posY = cptLig;
 						this.posX = cptCol;
@@ -162,20 +182,13 @@ ImageIcon img = new ImageIcon("bloc de terre.jpg");
 		}
 		catch(Exception e){ e.printStackTrace(); }
 	}
-	
+	/**
+	 * Close file function
+	 */
 	public void closeFile() 
 	{
 		sc.close();
 	}
-	/* public void PutFile()
-	 {
-	 		for( int lig=0; lig<tab.length; lig++)
-	{
-		for( int col=0; col<tab[lig].length; col++)
-			System.out.print ( tab[lig][col] );
-
-		System.out.println();
-	}
-	 }*/
+	
 	
 }

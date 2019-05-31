@@ -42,11 +42,11 @@ public class MainJava
 	public MainJava() 
 	{
 		JFrame f = new JFrame();
-		f.setTitle("Boulder Dash");
+		f.setTitle("Boulder Dash");    /**Title*/
 		f.add(new Board());
-		f.setSize(490, 512);
+		f.setSize(490, 512);            /**Dimension */
 		f.setLocationRelativeTo(null);
-		f.setResizable(false);
+		f.setResizable(false);           
 		f.setVisible(true);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.toFront();
