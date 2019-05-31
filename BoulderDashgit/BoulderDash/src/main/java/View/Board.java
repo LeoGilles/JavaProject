@@ -15,7 +15,6 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-import model.Block;
 import model.Player;
 
 public class Board extends JPanel implements ActionListener
@@ -32,7 +31,7 @@ public class Board extends JPanel implements ActionListener
 	private int position = 1;
 	BufferedImage img ;
 	public static int  Ps = 0 ;
-	protected Block r;
+	
 	public Board() 
 	{
 		/**
@@ -40,7 +39,7 @@ public class Board extends JPanel implements ActionListener
 		 */
 		m = new Map();
 		p = new Player();      
-		r = new Block();
+		
 		
 		addKeyListener(new Al());
 		setFocusable(true);
