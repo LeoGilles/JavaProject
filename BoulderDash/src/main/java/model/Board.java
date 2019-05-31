@@ -9,7 +9,7 @@ import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.Random;
+
 
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
@@ -57,10 +57,6 @@ public class Board extends JPanel implements ActionListener
 	public void actionPerformed(ActionEvent e) 
 	{
 		repaint();
-	}
-	public static int getRandomNumberInts(int min, int max){
-	    Random random = new Random();
-	    return random.ints(min,(max+1)).findFirst().getAsInt();
 	}
 	/**
 	 * paint of our JPanel
@@ -286,7 +282,7 @@ public class Board extends JPanel implements ActionListener
                    //   System.out.println(m.tab[mon.getMonsterX()][mon.getMonsterY()-1]);
                     }
                 }
-            	position = getRandomNumberInts(1,4);
+            	position = m.getRandomNumberInts(1,4);
             }
 /**
  * the same as up.key but for down.key
@@ -317,7 +313,7 @@ public class Board extends JPanel implements ActionListener
                         m.tab[p.getTileX()][p.getTileY()] = '0';
                     }
                 }
-           	position = getRandomNumberInts(1,4);
+           	position = m.getRandomNumberInts(1,4);
             }
             /**
              * the same as up.key and down.key but , if we try to go in a rock block and there is 
@@ -359,7 +355,7 @@ public class Board extends JPanel implements ActionListener
                     	}
                     }
                 }
-           	position = getRandomNumberInts(1,4);
+           	position = m.getRandomNumberInts(1,4);
             }
             /**
              * the same as left.key
@@ -401,7 +397,7 @@ public class Board extends JPanel implements ActionListener
                     }
                 }
             }
-            position = getRandomNumberInts(1,4);
+            position = m.getRandomNumberInts(1,4);
 }
 }
 }

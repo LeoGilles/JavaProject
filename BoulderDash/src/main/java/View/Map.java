@@ -16,7 +16,7 @@ public class Map
 	protected int posXS;
 	protected int posYS;
 	protected int ligV ,colV,ligR,colR,ligB,colB,ligM,colM;
-	private Image floor, wall,rock,nothing,diamond,pho,finish,monster; 
+	private Image floor, wall,rock,nothing,diamond,pho,finish,monster1,monster2,monster3; 
 	public char[][] tab;
 	String      ligne;
 	private Scanner     sc;
@@ -55,8 +55,11 @@ ImageIcon img = new ImageIcon("DirtBlock.jpg");
         img = new ImageIcon("finish1.jpg");
         finish = img.getImage();
         img = new ImageIcon("Mob.jpg");
-        monster = img.getImage();
-        
+        monster1 = img.getImage();
+        img = new ImageIcon("Mob2.jpg");
+        monster2 = img.getImage();
+        img = new ImageIcon("Mob3.jpg");
+        monster3 = img.getImage();
 		openFile();
 		readFile();
 		closeFile();
@@ -98,7 +101,19 @@ ImageIcon img = new ImageIcon("DirtBlock.jpg");
     }
     public Image getmonster()
     {
-    	return monster;
+    	int rand;
+    	rand = getRandomNumberInts(1,3);
+    	if (rand == 1 ) {
+    		return monster1;
+    	}
+    	if (rand == 2 ) {
+    		return monster2;
+    	}
+    	if (rand == 3 ) {
+    		return monster3;
+    	}
+    	else return monster1;
+    		
     }
     /**
      * function to return the character in the table at a designated position
@@ -112,6 +127,10 @@ ImageIcon img = new ImageIcon("DirtBlock.jpg");
 		return index;
 	}
 	
+	public int getRandomNumberInts(int min, int max){
+	    Random random = new Random();
+	    return random.ints(min,(max+1)).findFirst().getAsInt();
+	}
 	/**
 	 * function to open the file and get his length/height 
 	 * and then create our table with this values
