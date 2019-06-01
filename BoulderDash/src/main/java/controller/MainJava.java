@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package controller;
 
 
@@ -8,8 +11,18 @@ import javax.swing.JFrame;
 
 import model.Board;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class MainJava.
+ */
 public class MainJava 
 {
+	
+	/**
+	 * The main method.
+	 *
+	 * @param args the arguments
+	 */
 	public static void main(String[] args) 
 	{
 		/**
@@ -36,9 +49,10 @@ public class MainJava
 	        sc.close(); /** scanner closing*/
 		new MainJava();
 	}
-	 /**
-	  * Constructor to create the Jframe case
-	  */
+	 
+ 	/**
+ 	 * Constructor to create the Jframe case.
+ 	 */
 	public MainJava() 
 	{
 		JFrame f = new JFrame();

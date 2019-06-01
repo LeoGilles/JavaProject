@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package controller;
 
 import java.io.File;
@@ -10,32 +13,51 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ConnectBdd.
+ */
 //Création de la classe permettant de se connecter à la base de données
 public class ConnectBdd {
-    /**
-     * All attributes for the method createConnection
-     */
+    
+    /** All attributes for the method createConnection. */
     protected String BDD = "JavaProject";
+    
+    /** The url. */
     protected String url = "jdbc:mysql://localhost:3306/" + BDD;
+    
+    /** The user. */
     protected String user = "root";
+    
+    /** The passwd. */
     protected String passwd = "";
+    
+    /** The choice. */
     protected int choice;
+    
+    /** The cst. */
     protected CallableStatement cst ;
 
-    /**
-     * All attributes for the method chooseMap
-     */
+    /** All attributes for the method chooseMap. */
     protected Connection conn;
+    
+    /** The st. */
     protected Statement st;
+    
+    /** The rst. */
     protected ResultSet rst;
+    
+    /** The stg. */
     protected String stg;
 
 
 
 
 /**
+ * Creates the connexion.
+ *
  * @author Le Fortier
- * First method --> createConnection :
+ * First method -- createConnection :
  * Provide a connection betwwen the computer and the database.
  */
     public void createConnexion() {
@@ -58,11 +80,15 @@ public class ConnectBdd {
         e.printStackTrace();
      }
 }
+
 /**
-     @author Le Fortier
-     * @param ch the choice of the user
-     * This method is used to choice the map you want to play
-     */
+ * Choose map.
+ *
+ * @author Le Fortier
+ * @param ch the choice of the user
+ * This method is used to choice the map you want to play
+ * @throws SQLException the SQL exception
+ */
     public void chooseMap(int ch) throws SQLException {
         try {
         cst = conn.prepareCall("{call chooseMap(?, ?)}");

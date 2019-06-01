@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package View;
 
 
@@ -6,20 +9,36 @@ import java.awt.*;
 
 import javax.swing.*;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Player.
+ */
 public class Player 
 {
-	/**
-	 * Attributes initialization
-	 */
+	
+	/** Attributes initialization. */
 	private int tileX, tileY;
+	
+	/** The player. */
 	private Image player;
+	
+	/** The player 2. */
 	private Image player2;
+	
+	/** The player 3. */
 	private Image player3;
+	
+	/** The player 4. */
 	private Image player4;
+	
+	/** The player 5. */
 	private Image player5;
+	
+	/** The player 6. */
 	private Image player6;
+	
 	/**
-	 * Player's Constructor with his coordinates and sprites
+	 * Player's Constructor with his coordinates and sprites.
 	 */
 	public Player() 
 	{
@@ -45,10 +64,12 @@ public class Player
 		tileX = 1;
 		tileY = 1;
 	}
+	
 	/**
-	 * Function to select the appropriate sprite with each of the player's move
-	 * @param vr
-	 * @return
+	 * Function to select the appropriate sprite with each of the player's move.
+	 *
+	 * @param vr the vr
+	 * @return the player
 	 */
 	public Image getPlayer(int vr) 
 	{
@@ -69,26 +90,32 @@ public class Player
 		}
 			return player6;
 		}
+	
 	/**
-	 * function to get the x position
-	 * @return
+	 * function to get the x position.
+	 *
+	 * @return the tile X
 	 */
 	public int getTileX() 
 	{
 		return tileX;
 	}
+	
 	/**
-	 * function to get the y position
-	 * @return
+	 * function to get the y position.
+	 *
+	 * @return the tile Y
 	 */
 	public int getTileY() 
 	{
 		return tileY;
 	}
+	
 	/**
-	 * function to move the player position
-	 * @param dx
-	 * @param dy
+	 * function to move the player position.
+	 *
+	 * @param dx the dx
+	 * @param dy the dy
 	 */
 	public void move(int dx, int dy) 
 	{

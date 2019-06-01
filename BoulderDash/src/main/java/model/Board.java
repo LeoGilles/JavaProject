@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package model ;
 
 
@@ -18,21 +21,43 @@ import javax.swing.Timer;
 import View.Map;
 import View.Player;
 
+
+/**
+ * The Class Board.
+ */
 public class Board extends JPanel implements ActionListener
 {
-	/**
-	 * Variable initialisation
-	 */
-	private static final long serialVersionUID = 1L;
-	private Timer timer;
-	private Map m;
-	private Player p;
-	protected int Mo1 = 0;
-	private int pt = 0;
-	private int position = 1;
-	BufferedImage img ;
-	public static int  Ps = 0 ;
 	
+	/** Variable initialisation. */
+	private static final long serialVersionUID = 1L;
+	
+	/** The timer. */
+	private Timer timer;
+	
+	/** The m. */
+	private Map m;
+	
+	/** The p. */
+	private Player p;
+	
+	/** The Mo 1. */
+	protected int Mo1 = 0;
+	
+	/** The pt. */
+	private int pt = 0;
+	
+	/** The position. */
+	private int position = 1;
+	
+	/** The img. */
+	BufferedImage img ;
+	
+	/** The Ps. */
+	public  int  Ps = 0 ;
+	
+	/**
+	 * Instantiates a new board.
+	 */
 	public Board() 
 	{
 		/**
@@ -51,15 +76,21 @@ public class Board extends JPanel implements ActionListener
 		timer = new Timer(25, this);
 		timer.restart();
 	}
+	
 	/**
-	 * method to repaint our Jpanel 
+	 * method to repaint our Jpanel.
+	 *
+	 * @param e the e
 	 */
 	public void actionPerformed(ActionEvent e) 
 	{
 		repaint();
 	}
+	
 	/**
-	 * paint of our JPanel
+	 * paint of our JPanel.
+	 *
+	 * @param g the g
 	 */
 	public void paint(Graphics g) 
 	{
@@ -235,13 +266,20 @@ public class Board extends JPanel implements ActionListener
 		g.drawImage(p.getPlayer(Ps), p.getTileX() * 16, p.getTileY() * 16, null);	
 		
 	}
+	
 	/**
-	 * Player's movements controller 
-	 * @author leo gilles
+	 * Player's movements controller .
 	 *
+	 * @author leo gilles
 	 */
 	public class Al extends KeyAdapter
 	{
+		
+		/**
+		 * Key pressed.
+		 *
+		 * @param e the e
+		 */
 		public void keyPressed(KeyEvent e) 
         {
 			/**
