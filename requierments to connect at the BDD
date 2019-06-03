@@ -1,5 +1,5 @@
-if you have an error when you select your levels this is because you don't have the mysql-connector-java-5.1.39.jar installed 
-to install it go into your project's java build path
+if you have an error when you select your levels this is because you don't have the correct mysql-connector-java-5.1.39.jar installed 
+to install it go into your project's java build path , delete the wrong mysql-connector-java-5.1.39.jar who is not compatible with your directory
 in Libraries, click on Add External Jars...
 go into C:\Users\"Your users Name"\.m2\repository\mysql\mysql-connector-java\5.1.39\ mysql-connector-java-5.1.39.jar <-- here
 click on the .jar and it will be installer into your libraries
