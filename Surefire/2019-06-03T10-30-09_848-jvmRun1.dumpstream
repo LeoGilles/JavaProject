@@ -1,0 +1,208 @@
+# Created at 2019-06-03T10:30:30.884
+[SUREFIRE] std/in stream corrupted
+java.io.IOException: Command NOOP unexpectedly read Void data with length 4.
+	at org.apache.maven.surefire.booter.MasterProcessCommand.decode(MasterProcessCommand.java:130)
+	at org.apache.maven.surefire.booter.CommandReader$CommandRunnable.run(CommandReader.java:390)
+	at java.lang.Thread.run(Unknown Source)
+
+
+# Created at 2019-06-03T10:33:09.971
+Unexpected IOException: 7,1,controller.MainJavaTest,testMain(controller.MainJavaTest),null,null,null,null,controller.MainJavaTest#testMain InputMismatchException,java.util.InputMismatchException\000D\000A\0009at java.util.Scanner.throwFor(Unknown Source)\000D\000A\0009at java.util.Scanner.next(Unknown Source)\000D\000A\0009at java.util.Scanner.nextInt(Unknown Source)\000D\000A\0009at java.util.Scanner.nextInt(Unknown Source)\000D\000A\0009at controller.MainJavaTest.testMain(MainJavaTest.java:52)\000D\000A
+
+
+# Created at 2019-06-03T10:33:09.980
+Unexpected IOException: 5,1,controller.MainJavaTest,testMainJava(controller.MainJavaTest),null,null,null
+
+
+# Created at 2019-06-03T10:33:11.024
+Unexpected IOException: 6,1,controller.MainJavaTest,testMainJava(controller.MainJavaTest),null,null,null
+
+
+# Created at 2019-06-03T10:33:11.096
+Unexpected IOException: 2,1,org.apache.maven.surefire.junit.JUnit3Provider,controller.MainJavaTest,null,null,null
+
+
+# Created at 2019-06-03T10:33:11.122
+Unexpected IOException: 1,1,org.apache.maven.surefire.junit.JUnit3Provider,model.BoardTest,null,null,null
+
+
+# Created at 2019-06-03T10:33:11.914
+Unexpected IOException: 5,1,model.BoardTest,testJPanel(model.BoardTest),null,null,null
+
+
+# Created at 2019-06-03T10:33:11.928
+Unexpected IOException: 8,1,model.BoardTest,testJPanel(model.BoardTest),null,Not yet implemented,null,Not yet implemented,model.BoardTest#testJPanel AssertionFailedError Not yet implemented,junit.framework.AssertionFailedError: Not yet implemented\000D\000A\0009at junit.framework.Assert.fail(Assert.java:47)\000D\000A\0009at model.BoardTest.testJPanel(BoardTest.java:77)\000D\000A
+
+
+# Created at 2019-06-03T10:33:11.939
+Unexpected IOException: 5,1,model.BoardTest,testBoard(model.BoardTest),null,null,null
+
+
+# Created at 2019-06-03T10:33:11.948
+Unexpected IOException: 8,1,model.BoardTest,testBoard(model.BoardTest),null,Not yet implemented,null,Not yet implemented,model.BoardTest#testBoard AssertionFailedError Not yet implemented,junit.framework.AssertionFailedError: Not yet implemented\000D\000A\0009at junit.framework.Assert.fail(Assert.java:47)\000D\000A\0009at model.BoardTest.testBoard(BoardTest.java:41)\000D\000A
+
+
+# Created at 2019-06-03T10:33:11.964
+Unexpected IOException: 5,1,model.BoardTest,testPaintGraphics(model.BoardTest),null,null,null
+
+
+# Created at 2019-06-03T10:33:11.976
+Unexpected IOException: 8,1,model.BoardTest,testPaintGraphics(model.BoardTest),null,Not yet implemented,null,Not yet implemented,model.BoardTest#testPaintGraphics AssertionFailedError Not yet implemented,junit.framework.AssertionFailedError: Not yet implemented\000D\000A\0009at junit.framework.Assert.fail(Assert.java:47)\000D\000A\0009at model.BoardTest.testPaintGraphics(BoardTest.java:68)\000D\000A
+
+
+# Created at 2019-06-03T10:33:11.987
+Unexpected IOException: 5,1,model.BoardTest,testActionPerformed(model.BoardTest),null,null,null
+
+
+# Created at 2019-06-03T10:33:12.009
+Unexpected IOException: 6,1,model.BoardTest,testActionPerformed(model.BoardTest),null,null,null
+
+
+# Created at 2019-06-03T10:33:12.023
+Unexpected IOException: 2,1,org.apache.maven.surefire.junit.JUnit3Provider,model.BoardTest,null,null,null
+
+
+# Created at 2019-06-03T10:33:12.034
+Unexpected IOException: 1,1,org.apache.maven.surefire.junit.JUnit3Provider,View.MapTest,null,null,null
+
+
+# Created at 2019-06-03T10:33:12.047
+Unexpected IOException: 5,1,View.MapTest,testGetRandomNumberInts(View.MapTest),null,null,null
+
+
+# Created at 2019-06-03T10:33:12.092
+Unexpected IOException: 8,1,View.MapTest,testGetRandomNumberInts(View.MapTest),null,error,null,error,View.MapTest#testGetRandomNumberInts AssertionFailedError error,junit.framework.AssertionFailedError: error\000D\000A\0009at junit.framework.Assert.fail(Assert.java:47)\000D\000A\0009at View.MapTest.testGetRandomNumberInts(MapTest.java:151)\000D\000A
+
+
+# Created at 2019-06-03T10:33:12.106
+Unexpected IOException: 5,1,View.MapTest,testGetMap(View.MapTest),null,null,null
+
+
+# Created at 2019-06-03T10:33:12.224
+Unexpected IOException: 6,1,View.MapTest,testGetMap(View.MapTest),null,null,null
+
+
+# Created at 2019-06-03T10:33:12.232
+Unexpected IOException: 5,1,View.MapTest,testReadFile(View.MapTest),null,null,null
+
+
+# Created at 2019-06-03T10:33:12.244
+Unexpected IOException: 6,1,View.MapTest,testReadFile(View.MapTest),null,null,null
+
+
+# Created at 2019-06-03T10:33:12.281
+Unexpected IOException: 5,1,View.MapTest,testGetPho(View.MapTest),null,null,null
+
+
+# Created at 2019-06-03T10:33:12.326
+Unexpected IOException: 6,1,View.MapTest,testGetPho(View.MapTest),null,null,null
+
+
+# Created at 2019-06-03T10:33:12.358
+Unexpected IOException: 5,1,View.MapTest,testGetFinish(View.MapTest),null,null,null
+
+
+# Created at 2019-06-03T10:33:12.391
+Unexpected IOException: 6,1,View.MapTest,testGetFinish(View.MapTest),null,null,null
+
+
+# Created at 2019-06-03T10:33:12.400
+Unexpected IOException: 5,1,View.MapTest,testGetmonster(View.MapTest),null,null,null
+
+
+# Created at 2019-06-03T10:33:12.426
+Unexpected IOException: 6,1,View.MapTest,testGetmonster(View.MapTest),null,null,null
+
+
+# Created at 2019-06-03T10:33:12.447
+Unexpected IOException: 5,1,View.MapTest,testOpenFile(View.MapTest),null,null,null
+
+
+# Created at 2019-06-03T10:33:12.469
+Unexpected IOException: 6,1,View.MapTest,testOpenFile(View.MapTest),null,null,null
+
+
+# Created at 2019-06-03T10:33:12.508
+Unexpected IOException: 5,1,View.MapTest,testGetNothing(View.MapTest),null,null,null
+
+
+# Created at 2019-06-03T10:33:12.554
+Unexpected IOException: 6,1,View.MapTest,testGetNothing(View.MapTest),null,null,null
+
+
+# Created at 2019-06-03T10:33:12.579
+Unexpected IOException: 5,1,View.MapTest,testGetWall(View.MapTest),null,null,null
+
+
+# Created at 2019-06-03T10:33:12.606
+Unexpected IOException: 6,1,View.MapTest,testGetWall(View.MapTest),null,null,null
+
+
+# Created at 2019-06-03T10:33:12.631
+Unexpected IOException: 5,1,View.MapTest,testGetRock(View.MapTest),null,null,null
+
+
+# Created at 2019-06-03T10:33:12.678
+Unexpected IOException: 6,1,View.MapTest,testGetRock(View.MapTest),null,null,null
+
+
+# Created at 2019-06-03T10:33:12.689
+Unexpected IOException: 5,1,View.MapTest,testGetDiamond(View.MapTest),null,null,null
+
+
+# Created at 2019-06-03T10:33:12.736
+Unexpected IOException: 6,1,View.MapTest,testGetDiamond(View.MapTest),null,null,null
+
+
+# Created at 2019-06-03T10:33:12.762
+Unexpected IOException: 5,1,View.MapTest,testGetFloor(View.MapTest),null,null,null
+
+
+# Created at 2019-06-03T10:33:12.776
+Unexpected IOException: 6,1,View.MapTest,testGetFloor(View.MapTest),null,null,null
+
+
+# Created at 2019-06-03T10:33:12.795
+Unexpected IOException: 2,1,org.apache.maven.surefire.junit.JUnit3Provider,View.MapTest,null,null,null
+
+
+# Created at 2019-06-03T10:33:12.807
+Unexpected IOException: 1,1,org.apache.maven.surefire.junit.JUnit3Provider,View.PlayerTest,null,null,null
+
+
+# Created at 2019-06-03T10:33:12.819
+Unexpected IOException: 5,1,View.PlayerTest,testGetPlayer(View.PlayerTest),null,null,null
+
+
+# Created at 2019-06-03T10:33:12.843
+Unexpected IOException: 6,1,View.PlayerTest,testGetPlayer(View.PlayerTest),null,null,null
+
+
+# Created at 2019-06-03T10:33:12.853
+Unexpected IOException: 5,1,View.PlayerTest,testGetTileX(View.PlayerTest),null,null,null
+
+
+# Created at 2019-06-03T10:33:12.872
+Unexpected IOException: 6,1,View.PlayerTest,testGetTileX(View.PlayerTest),null,null,null
+
+
+# Created at 2019-06-03T10:33:12.938
+Unexpected IOException: 5,1,View.PlayerTest,testGetTileY(View.PlayerTest),null,null,null
+
+
+# Created at 2019-06-03T10:33:12.963
+Unexpected IOException: 6,1,View.PlayerTest,testGetTileY(View.PlayerTest),null,null,null
+
+
+# Created at 2019-06-03T10:33:12.978
+Unexpected IOException: 5,1,View.PlayerTest,testMove(View.PlayerTest),null,null,null
+
+
+# Created at 2019-06-03T10:33:12.987
+Unexpected IOException: 6,1,View.PlayerTest,testMove(View.PlayerTest),null,null,null
+
+
+# Created at 2019-06-03T10:33:13.000
+Unexpected IOException: 2,1,org.apache.maven.surefire.junit.JUnit3Provider,View.PlayerTest,null,null,null
+
+
