@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-//Création de la classe permettant de se connecter à la base de données
+
 public class ConnectBdd {
 	
 /**
@@ -34,25 +34,25 @@ public class ConnectBdd {
 
 /**
  * @author Le Fortier
- * <br></br>
+ * 
  * Method : createConnection :
  * Provide a connection betwwen the computer and the database.
- * <br></br>
- * <url>
- * In the part <b>try</b> we have the instructions to be connected to the database.
- * You use the method <b>ForName</b> to call the driver which is used to connect the database with
+ * 
+ * 
+ * In the part try we have the instructions to be connected to the database.
+ * You use the method ForName to call the driver which is used to connect the database with
  * your computer.
  * Four attributes are created :
- * <li> The attribute <b>BDD</b>, to include the name of the database</li>
- * <li>The attribute <b>url</b>, to include the way to the database</li>
- * <li>the attribute <b> login </b>, to include the login of the database</li>
- * <li>The attribute <b>passwd</b>, to include the password of the database</li>
- * Finally we use the method <b>getConnection</b> from the class <b>DriverManager</b> to be connected to the database.
- * <br></br>
- * In the part <b>catch</b> we have the exceptions, if the connection doesn't work.
- * @return 
- *  @exception SQLExceptions
- * </url>
+ *  The attribute BDD, to include the name of the database
+ * The attribute url, to include the way to the database
+ * the attribute  login , to include the login of the database
+ * The attribute passwd, to include the password of the database
+ * Finally we use the method getConnection from the class DriverManager to be connected to the database.
+ * 
+ * In the part catch we have the exceptions, if the connection doesn't work.
+ * 
+ * 
+ * 
  */
     public void createConnexion() {
    
@@ -79,21 +79,21 @@ public class ConnectBdd {
     	return resultConnection;
     }
 /**
- @author Le Fortier <br></br>
+ @author Le Fortier 
  
- * This method is used to choice the map you want to play <br></br>
- * <url>
- * In the part <b>try</b> we have the call of the procedure in the database.
- * <li><b>cst</b> is a <b>CallableStatement</b> object which call a procedure.</li>
- * <li>The method <b>prepareCall</b> allows to call the procedure called <b>chooseMap(?, ?)</b> with to parameters : one INPUT parameter and one OUTPUT parameter.</ld>
- * <li>The method <b>setInt</b> allows to give the INPUT parameter.
- * <li>The method <b>registerOutParameter</b> allows to give the OUTPUT parameter which is the result of the procedure.</ld>
- * <li>The method <b>execute</b> allows to execute the procedure.</ld> <br></br>
+ * This method is used to choice the map you want to play 
+ * 
+ * In the part try we have the call of the procedure in the database.
+ * cst is a CallableStatement object which call a procedure.
+ * The method prepareCall allows to call the procedure called chooseMap(?, ?) with to parameters : one INPUT parameter and one OUTPUT parameter.
+ * The method setInt allows to give the INPUT parameter.
+ * The method registerOutParameter allows to give the OUTPUT parameter which is the result of the procedure.
+ * The method execute allows to execute the procedure.
  * After that, we write the result (the map) in a txt file.
  * 
- * </url>
+ * 
  * @param ch the choice of the user
- * @exception IOException
+ * 
  */
     public void chooseMap(int ch) throws SQLException {
     	try {
