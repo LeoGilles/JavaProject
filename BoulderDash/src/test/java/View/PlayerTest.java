@@ -40,9 +40,7 @@ public class PlayerTest extends TestCase {
 	
 
 	/**
-	 * Test get player.
-	 *
-	 * @param player6 the player 6
+	 * Test the instanciation get player.
 	 */
 	public void testGetPlayer() {
 		Image player6;
@@ -53,7 +51,7 @@ public class PlayerTest extends TestCase {
 	}
 
 	/**
-	 * Test get tile X.
+	 * Test  the attribute and the return of get tile X.
 	 */
 	public void testGetTileX() {
 		final int expected =  1 ;
@@ -61,7 +59,7 @@ public class PlayerTest extends TestCase {
 	}
 
 	/**
-	 * Test get tile Y.
+	 * Test the attribute and the return  get tile Y.
 	 */
 	public void testGetTileY() {
 		final int expected =  1 ;
@@ -69,7 +67,7 @@ public class PlayerTest extends TestCase {
 	}
 
 	/**
-	 * Test move.
+	 * Test if the method move really change our position
 	 */
 	public void testMove() {
 		final int expected1 = 2 ;

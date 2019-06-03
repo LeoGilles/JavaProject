@@ -185,16 +185,26 @@ public class Board extends JPanel implements ActionListener
                   
                     g.drawImage(m.getRock(), x * 16,y * 16, null);
 
-                	if (m.tab[x][y+1] == '0' &&(  (x != p.getTileX() || y+1 != p.getTileY()) ))
+                	if (m.tab[x][y+1] == '0'  &&(  (x != p.getTileX() || y+1 != p.getTileY()) ))
 					{
 					m.tab[x][y] = '0';
-					
 					m.tab[x][y+1] = '3';
+					
 					if (x == p.getTileX() && y+2 == p.getTileY())
 					{
 						m.tab[x][y+2] = '3';
 						
 					}
+					}
+                	else if (m.tab[x+1][y] == '0' && m.tab[x+1][y+1] == '0' &&(  (x+1 != p.getTileX() || y+1 != p.getTileY()) ))
+					{
+						m.tab[x][y] = '0';
+						m.tab[x+1][y+1] = '3';
+					}
+                	else if (m.tab[x-1][y] == '0' && m.tab[x-1][y+1] == '0' &&(  (x-1 != p.getTileX() || y+1 != p.getTileY()) ))
+					{
+						m.tab[x][y] = '0';
+						m.tab[x-1][y+1] = '3';
 					}
             	else 
             	{
@@ -224,6 +234,11 @@ public class Board extends JPanel implements ActionListener
                 		 g.drawImage(m.getmonster(),x * 16,y * 16,null);
                 		 position = 0;
                 	}
+                	else if (position == 1 && m.getMap(x, y-1)== '3')
+                	{
+                		m.tab[x][y] = '0';
+                		m.tab[x][y-1] = '3';
+                	}
                 	else if (position == 2 && m.getMap(x, y+1)== '0')
                 	{
                 		m.tab[x][y] = '0';
@@ -252,7 +267,7 @@ public class Board extends JPanel implements ActionListener
                 	}
                            	
                 }
-                if ( m.getMap(p.getTileX(), p.getTileY()) == '5')
+                if ( m.getMap(p.getTileX(), p.getTileY()-1) == '5')
                 {
                 	m.tab[p.getTileX()][p.getTileY()] = '3';
                 }
@@ -300,7 +315,7 @@ public class Board extends JPanel implements ActionListener
             {
             	if (m.getMap(p.getTileX(), p.getTileY()) == 'f'|| m.getMap(p.getTileX(), p.getTileY()) == '3' ) /**test if we are on a rock or finishblock   */
             	{
-            		System.out.println("END");                           /**display end*/
+            		System.out.println("Game Over");                           /**display end*/
             		Ps = 5;                                              /**change sprite*/           		
             	}
             	
@@ -317,7 +332,7 @@ public class Board extends JPanel implements ActionListener
                     	Ps = 1;                                   /**change sprite*/                    	
                         p.move(0, -1);                                  /** make the player move */
                       m.tab[p.getTileX()][p.getTileY()] = '0';          /** set 0 to table */
-                   //   System.out.println(m.tab[mon.getMonsterX()][mon.getMonsterY()-1]);
+                  
                     }
                 }
             	position = m.getRandomNumberInts(1,4);
@@ -329,7 +344,7 @@ public class Board extends JPanel implements ActionListener
             {            	
            	if (m.getMap(p.getTileX(), p.getTileY()) == 'f'|| m.getMap(p.getTileX(), p.getTileY()) == '3' )
             	{
-            		System.out.println("END");
+            		System.out.println("Game Over");
             		Ps = 5;
             	}
            	else	if (m.getMap(p.getTileX(), p.getTileY()+1) == 'f' )
@@ -361,7 +376,7 @@ public class Board extends JPanel implements ActionListener
             {  
            	if (m.getMap(p.getTileX(), p.getTileY()) == 'f' || m.getMap(p.getTileX(), p.getTileY()) == '3' )
             	{
-            		System.out.println("END");
+            		System.out.println("Game Over");
             		Ps = 5;
             	}
            	else	if (m.getMap(p.getTileX()-1, p.getTileY()) == 'f' )
@@ -402,7 +417,7 @@ public class Board extends JPanel implements ActionListener
             {
             	if (m.getMap(p.getTileX(), p.getTileY()) == 'f'|| m.getMap(p.getTileX(), p.getTileY()) == '3' )
             	{
-            		System.out.println("END");
+            		System.out.println("Game Over");
             		Ps = 5;
             	}
             	else if (m.getMap(p.getTileX()+1, p.getTileY()) == 'f' )

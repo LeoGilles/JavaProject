@@ -8,17 +8,34 @@ import javax.swing.ImageIcon;
 
 import junit.framework.TestCase;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class MapTest.
+ */
 public class MapTest extends TestCase {
 
+	/**
+	 * Sets the up.
+	 *
+	 * @throws Exception the exception
+	 */
 	protected void setUp() throws Exception {
 		super.setUp();
 		
 	}
 
+	/**
+	 * Tear down.
+	 *
+	 * @throws Exception the exception
+	 */
 	protected void tearDown() throws Exception {
 		super.tearDown();
 	}
 
+	/**
+	 * Test the instanciation get floor.
+	 */
 	public void testGetFloor() {
 		Map m = new Map();
 		Image floor;
@@ -27,6 +44,9 @@ public class MapTest extends TestCase {
 		assertEquals(floor,m.getFloor());
 	}
 
+	/**
+	 * Test the instanciation get wall.
+	 */
 	public void testGetWall() {
 		Map m = new Map();
 		Image wall;
@@ -35,6 +55,9 @@ public class MapTest extends TestCase {
 		assertEquals(wall,m.getWall());
 	}
 
+	/**
+	 * Test the instanciation get rock.
+	 */
 	public void testGetRock() {
 		Map m = new Map();
 		Image rock;
@@ -43,6 +66,9 @@ public class MapTest extends TestCase {
 		assertEquals(rock,m.getRock());
 	}
 
+	/**
+	 * Test the instanciation get nothing.
+	 */
 	public void testGetNothing() {
 		Map m = new Map();
 		Image nothing;
@@ -51,6 +77,9 @@ public class MapTest extends TestCase {
 		assertEquals(nothing,m.getNothing());
 	}
 
+	/**
+	 * Test the instanciation get diamond.
+	 */
 	public void testGetDiamond() {
 		Map m = new Map();
 		Image diamond;
@@ -59,6 +88,9 @@ public class MapTest extends TestCase {
 		assertEquals(diamond,m.getDiamond());
 	}
 
+	/**
+	 * Test the instanciation get pho.
+	 */
 	public void testGetPho() {
 		Map m = new Map();
 		Image pho;
@@ -67,6 +99,9 @@ public class MapTest extends TestCase {
 		assertEquals(pho,m.getPho());
 	}
 
+	/**
+	 * Test the instanciation get finish.
+	 */
 	public void testGetFinish() {
 		Map m = new Map();
 		Image finish;
@@ -75,6 +110,9 @@ public class MapTest extends TestCase {
 		assertEquals(finish,m.getFinish());
 	}
 
+	/**
+	 * Test the instanciation getmonster.
+	 */
 	public void testGetmonster() {
 		Map m = new Map();
 		Image monster1;
@@ -86,6 +124,10 @@ public class MapTest extends TestCase {
 
 	}
 
+	/**
+	 * Test get map.
+	 * test if at this position there is the real char
+	 */
 	public void testGetMap() {
 		Map m = new Map();
 		char eq;
@@ -93,6 +135,10 @@ public class MapTest extends TestCase {
 		assertEquals(eq,m.getMap(0, 0));
 	}
 
+	/**
+	 * Test get random number ints.
+	 * try the random number command and test if the value is not unexpected or out of bounds
+	 */
 	public void testGetRandomNumberInts() {
 		Map m = new Map();
 		int eq = m.getRandomNumberInts(1, 3);
@@ -102,11 +148,16 @@ public class MapTest extends TestCase {
 			assertEquals(0,0);
 		}
 		else {
-			fail("euh error");
+			fail("error");
 		}
 		
 	}
 
+	/**
+	 * Test open file.
+	 * new scanner on the Map and compare a position with the same position 
+	 * in the real OpenFile() method
+	 */
 	public void testOpenFile() {
 		Map m = new Map();
 		m.openFile();
@@ -132,6 +183,10 @@ public class MapTest extends TestCase {
 	}
 
 	
+	/**
+	 * Test read file.
+	 * new scanner to test if the Readfile is working corectly
+	 */
 	public void testReadFile() {
 		Map m = new Map();
 		m.readFile();
