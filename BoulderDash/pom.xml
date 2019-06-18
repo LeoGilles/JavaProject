@@ -34,4 +34,10 @@
     </dependency>
   </dependencies>
  
+  <packaging>pom</packaging>
+  <modules>
+  	<module>ViewMaven</module>
+  	<module>ModelMaven</module>
+  	<module>ControllerMaven</module>
+  </modules>
 </project>

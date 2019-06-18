@@ -23,7 +23,7 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry exported="true" kind="src" path="/ViewMaven"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/ControllerMaven"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/BoulderDash"/>
+	<classpathentry kind="src" path="/ViewMaven"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

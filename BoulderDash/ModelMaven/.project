@@ -3,6 +3,8 @@
 	<name>ModelMaven</name>
 	<comment></comment>
 	<projects>
+		<project>ControllerMaven</project>
+		<project>ViewMaven</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

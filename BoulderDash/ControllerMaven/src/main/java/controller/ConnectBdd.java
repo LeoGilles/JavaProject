@@ -60,7 +60,7 @@ public class ConnectBdd {
         Class.forName("com.mysql.jdbc.Driver");
         conn = DriverManager.getConnection(url, user, passwd);
         resultConnection = "Connected";
-       // System.out.println(resultConnection);
+       System.out.println(resultConnection);
 
         
 
